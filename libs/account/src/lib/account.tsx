@@ -1,14 +1,19 @@
-import styled from 'styled-components';
+import { Heading, Row } from '@/shared';
 
-const StyledAccount = styled.div`
-  color: pink;
-`;
 export function Account() {
   return (
-    <StyledAccount>
-      <h1>Welcome to Account!</h1>
-    </StyledAccount>
+    <>
+      <Heading as="h1">Update your account</Heading>
+
+      <Row>
+        <Heading as="h3">Update user data</Heading>
+        <p>Update user data form</p>
+      </Row>
+
+      <Row>
+        <Heading as="h3">Update password</Heading>
+        <p>Update user password form</p>
+      </Row>
+    </>
   );
 }
-
-export default Account;

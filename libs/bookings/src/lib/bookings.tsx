@@ -1,14 +1,10 @@
-import styled from 'styled-components';
+import { Heading, Row } from '@/shared';
 
-const StyledBookings = styled.div`
-  color: pink;
-`;
 export function Bookings() {
   return (
-    <StyledBookings>
-      <h1>Welcome to Bookings!</h1>
-    </StyledBookings>
+    <Row type="horizontal">
+      <Heading as="h1">All bookings</Heading>
+      <p>TEST</p>
+    </Row>
   );
 }
-
-export default Bookings;

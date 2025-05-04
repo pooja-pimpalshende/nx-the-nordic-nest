@@ -1,14 +1,19 @@
 import styled from 'styled-components';
 
-const StyledLogin = styled.div`
-  color: pink;
+const LoginLayout = styled.main`
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 48rem;
+  align-content: center;
+  justify-content: center;
+  gap: 3.2rem;
+  background-color: var(--color-grey-50);
 `;
+
 export function Login() {
   return (
-    <StyledLogin>
+    <LoginLayout>
       <h1>Welcome to Login!</h1>
-    </StyledLogin>
+    </LoginLayout>
   );
 }
-
-export default Login;

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 interface ButtonProps {
   variations?: keyof typeof variations;
@@ -64,12 +64,10 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ variations: variation }) => variation && variations[variation]}
 `;
 
-const Button = ({
-  variations = "primary",
-  sizes = "medium",
+export const Button = ({
+  variations = 'primary',
+  sizes = 'medium',
   ...props
 }: ButtonProps) => {
   return <StyledButton variations={variations} sizes={sizes} {...props} />;
 };
-
-export default Button;

@@ -1,14 +1,5 @@
-import styled from 'styled-components';
+import { Heading } from '@/shared';
 
-const StyledUsers = styled.div`
-  color: pink;
-`;
 export function Users() {
-  return (
-    <StyledUsers>
-      <h1>Welcome to Users!</h1>
-    </StyledUsers>
-  );
+  return <Heading as="h1">Create a new user</Heading>;
 }
-
-export default Users;

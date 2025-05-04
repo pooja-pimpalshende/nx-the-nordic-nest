@@ -1,12 +1,10 @@
-import styled from 'styled-components';
+import { Heading, Row } from '@/shared';
 
-const StyledDashboard = styled.div`
-  color: pink;
-`;
 export function Dashboard() {
   return (
-    <StyledDashboard>
-      <h1>Welcome to Dashboard!</h1>
-    </StyledDashboard>
+    <Row type="horizontal">
+      <Heading as="h1">Dashboard</Heading>
+      <p>TEST</p>
+    </Row>
   );
 }

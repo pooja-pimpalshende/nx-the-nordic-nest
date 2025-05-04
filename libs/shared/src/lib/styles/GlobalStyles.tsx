@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 
 :root {
   /* Indigo */
@@ -186,5 +186,3 @@ FOR DARK MODE
 
     
 `;
-
-export default GlobalStyles;

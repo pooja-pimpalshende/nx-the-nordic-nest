@@ -1,14 +1,10 @@
-import styled from 'styled-components';
+import { Heading, Row } from '@/shared';
 
-const StyledCabins = styled.div`
-  color: pink;
-`;
 export function Cabins() {
   return (
-    <StyledCabins>
-      <h1>Welcome to Cabins!</h1>
-    </StyledCabins>
+    <Row type="horizontal">
+      <Heading as="h1">All cabins</Heading>
+      <p>TEST</p>
+    </Row>
   );
 }
-
-export default Cabins;

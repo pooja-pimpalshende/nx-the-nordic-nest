@@ -1,14 +1,5 @@
-import styled from 'styled-components';
+import { Heading } from '@/shared';
 
-const StyledSettings = styled.div`
-  color: pink;
-`;
 export function Settings() {
-  return (
-    <StyledSettings>
-      <h1>Welcome to Settings!</h1>
-    </StyledSettings>
-  );
+  return <Heading as="h1">Update hotel settings</Heading>;
 }
-
-export default Settings;

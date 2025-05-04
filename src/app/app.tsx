@@ -1,8 +1,6 @@
-import Header from '../ui/Header';
-import GlobalStyles from '../styles/GlobalStyles';
+import { GlobalStyles } from '@/shared';
 import styled from 'styled-components';
-import Sidebar from '../ui/Sidebar';
-import { Outlet } from '@tanstack/react-router';
+import { Layout } from '@/layout';
 
 const StyledApp = styled.div`
   display: grid;
@@ -11,21 +9,12 @@ const StyledApp = styled.div`
   height: 100vh;
 `;
 
-const Main = styled.main`
-  background-color: var(--color-grey-50);
-  padding: 4rem 4.8rem 6.4rem;
-`;
-
 export function App() {
   return (
     <>
       <GlobalStyles />
       <StyledApp>
-        <Header />
-        <Sidebar />
-        <Main>
-          <Outlet />
-        </Main>
+        <Layout />
       </StyledApp>
     </>
   );

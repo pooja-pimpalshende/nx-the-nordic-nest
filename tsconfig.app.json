@@ -23,5 +23,12 @@
     "vitest.config.ts",
     "vitest.config.mts"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "libs/shared/src/lib/components/Heading.tsx",
+    "libs/shared/src/lib/components/Row.tsx"
+  ]
 }

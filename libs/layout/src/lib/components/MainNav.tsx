@@ -1,12 +1,12 @@
-import { Link } from "@tanstack/react-router";
-import styled from "styled-components";
+import { Link } from '@tanstack/react-router';
+import styled from 'styled-components';
 import {
   HiOutlineCalendarDays,
   HiOutlineCog6Tooth,
   HiOutlineHome,
   HiOutlineHomeModern,
   HiOutlineUsers,
-} from "react-icons/hi2";
+} from 'react-icons/hi2';
 
 const NavList = styled.ul`
   display: flex;
@@ -52,7 +52,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function MainNav() {
+export function MainNav() {
   return (
     <NavList>
       <li>
@@ -87,5 +87,3 @@ function MainNav() {
     </NavList>
   );
 }
-
-export default MainNav;
