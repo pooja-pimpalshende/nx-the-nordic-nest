@@ -6,13 +6,13 @@ import {
   redirect,
 } from '@tanstack/react-router';
 
-import Dashboard from './pages/Dashboard';
-import Account from './pages/Account';
-import Bookings from './pages/Bookings';
-import Cabins from './pages/Cabins';
-import Login from './pages/Login';
-import Settings from './pages/Settings';
-import NewUsers from './pages/Users';
+import { Dashboard } from '@/dashboard';
+import { Account } from '@/account';
+import { Bookings } from '@/bookings';
+import { Cabins } from '@/cabins';
+import { Login } from '@/login';
+import { Settings } from '@/settings';
+import { Users } from '@/users';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import App from './app/app';
 
@@ -78,7 +78,7 @@ const settingsRoute = createRoute({
 const newUsersRoute = createRoute({
   getParentRoute: () => appRoute,
   path: '/newUsers',
-  component: NewUsers,
+  component: Users,
 });
 
 const routeTree = rootRoute.addChildren([

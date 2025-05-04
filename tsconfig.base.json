@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@/account": ["libs/account/src/index.ts"],
+      "@/bookings": ["libs/bookings/src/index.ts"],
+      "@/cabins": ["libs/cabins/src/index.ts"],
+      "@/dashboard": ["libs/dashboard/src/index.ts"],
+      "@/login": ["libs/login/src/index.ts"],
+      "@/settings": ["libs/settings/src/index.ts"],
+      "@/users": ["libs/users/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
