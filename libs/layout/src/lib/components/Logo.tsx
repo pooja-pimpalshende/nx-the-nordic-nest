@@ -5,14 +5,14 @@ const StyledLogo = styled.div`
 `;
 
 const Img = styled.img`
-  height: 9.6rem;
+  height: 18rem;
   width: auto;
 `;
 
 export function Logo() {
   return (
     <StyledLogo>
-      <Img src="/logo.png" alt="logo" />
+      <Img src="/logo-light.png" alt="logo" />
     </StyledLogo>
   );
 }
