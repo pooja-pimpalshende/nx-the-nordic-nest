@@ -73,7 +73,7 @@ export function MainNav() {
         </StyledLink>
       </li>
       <li>
-        <StyledLink to="/newUsers">
+        <StyledLink to="/users">
           <HiOutlineUsers />
           <span>Users</span>
         </StyledLink>
