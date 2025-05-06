@@ -23,7 +23,8 @@
       "@/settings": ["libs/settings/src/index.ts"],
       "@/shared": ["libs/shared/src/index.ts"],
       "@/users": ["libs/users/src/index.ts"],
-      "@/layout": ["libs/layout/src/index.ts"]
+      "@/layout": ["libs/layout/src/index.ts"],
+      "@tanstack/react-query": ["node_modules/@tanstack/react-query"]
     }
   },
   "exclude": ["node_modules", "tmp"]
