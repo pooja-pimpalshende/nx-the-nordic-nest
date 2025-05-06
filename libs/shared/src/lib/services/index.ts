@@ -1,1 +1,1 @@
-export * from '../services/apiCabins';
+export * from './supabase';
