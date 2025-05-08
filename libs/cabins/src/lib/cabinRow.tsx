@@ -2,6 +2,7 @@ import { formatCurrency } from '@/shared';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import styled from 'styled-components';
 import { deleteCabin } from './services';
+import toast from 'react-hot-toast';
 
 const TableRow = styled.div`
   display: grid;
@@ -56,13 +57,13 @@ export function CabinRow({ cabin }: any) {
   const { isPending: isDeleting, mutate } = useMutation({
     mutationFn: deleteCabin,
     onSuccess: () => {
-      alert('Cabin successfully deleted!');
+      toast.success('Cabin successfully deleted!');
 
       queryClient.invalidateQueries({
         queryKey: ['cabins'],
       });
     },
-    onError: (err) => alert(err.message),
+    onError: (err) => toast.error(err.message),
   });
 
   return (
