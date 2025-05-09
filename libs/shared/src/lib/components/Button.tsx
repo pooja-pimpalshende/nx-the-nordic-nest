@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 
-interface ButtonProps {
+type ButtonProps = {
   variations?: keyof typeof variations;
   sizes?: keyof typeof sizes;
   children: React.ReactNode;
-}
+  type?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
 
 const sizes = {
   small: css`
