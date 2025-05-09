@@ -6,6 +6,7 @@ type ButtonProps = {
   children: React.ReactNode;
   type?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
 };
 
 const sizes = {

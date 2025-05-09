@@ -63,7 +63,9 @@ export function CabinRow({ cabin }: any) {
         queryKey: ['cabins'],
       });
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err) => {
+      if (err instanceof Error) toast.error(err.message);
+    },
   });
 
   return (

@@ -12,11 +12,22 @@ export async function getCabins(): Promise<Cabin[]> {
   return data;
 }
 
+export async function createCabin(newCabin: Cabin) {
+  const { data, error } = await supabase.from('cabins').insert([newCabin]);
+
+  if (error) {
+    console.log(error);
+    throw new Error(error.message || 'Cabins could not be created ');
+  }
+
+  return data;
+}
+
 export async function deleteCabin(id: Cabin['id']) {
   const { data, error } = await supabase.from('cabins').delete().eq('id', id);
   if (error) {
     console.log(error);
-    throw new Error('Cabin could not be deleted ');
+    throw new Error(error.message || 'Cabin could not be deleted ');
   }
 
   return data;
