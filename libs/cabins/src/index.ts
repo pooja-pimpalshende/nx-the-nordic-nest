@@ -5,3 +5,4 @@ export * from './lib/cabinRow';
 export * from './lib/cabinTable';
 export * from './lib/cabinTypes';
 export * from './lib/createCabinForm';
+export * from './lib/FormRow';
