@@ -4,6 +4,6 @@ export type Cabin = {
   maxCapacity: number;
   regularPrice: number;
   discount: number;
-  image: string;
+  image: FileList;
   description: string;
 };
