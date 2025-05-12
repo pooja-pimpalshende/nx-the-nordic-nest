@@ -1,4 +1,4 @@
-import { Button, Form, Input } from '@/shared';
+import { Button, FileInput, Form, Input } from '@/shared';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FieldErrors, useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -9,36 +9,6 @@ import { FormRow } from './FormRow';
 
 type FormValues = Cabin;
 
-const FormRow2 = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 24rem 1fr 1.2fr;
-  gap: 2.4rem;
-  padding: 1.2rem 0;
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    padding-bottom: 0;
-  }
-
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
-
-  &:has(Button) {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1.2rem;
-  }
-`;
-
-const Label = styled.label`
-  font-weight: 500;
-`;
-
 const Textarea = styled.textarea`
   padding: 0.8rem 1.2rem;
   border: 1px solid var(--color-grey-300);
@@ -47,33 +17,6 @@ const Textarea = styled.textarea`
   box-shadow: var(--shadow-sm);
   width: 100%;
   height: 8rem;
-`;
-
-const FileInput = styled.input`
-  font-size: 1.4rem;
-  border-radius: var(--border-radius-sm);
-
-  &::file-selector-button {
-    font: inherit;
-    font-weight: 500;
-    padding: 0.8rem 1.2rem;
-    margin-right: 1.2rem;
-    border-radius: var(--border-radius-sm);
-    border: none;
-    color: var(--color-brand-50);
-    background-color: var(--color-brand-600);
-    cursor: pointer;
-    transition: color 0.2s, background-color 0.2s;
-
-    &:hover {
-      background-color: var(--color-brand-700);
-    }
-  }
-`;
-
-const Error = styled.span`
-  font-size: 1.4rem;
-  color: var(--color-red-700);
 `;
 
 export function CreateCabinForm() {
@@ -97,11 +40,12 @@ export function CreateCabinForm() {
   });
 
   function onSubmit(data: FormValues) {
-    mutate(data);
+    console.log(data);
+    mutate({ ...data, image: data.image });
   }
 
   function onError(errors: FieldErrors<FormValues>) {
-    console.log(errors);
+    // console.log(errors);
   }
 
   return (
@@ -172,17 +116,20 @@ export function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow2>
-        <Label htmlFor="image">Cabin Photo</Label>
-        <FileInput id="image" accept="image/*" />
-      </FormRow2>
+      <FormRow label="Cabin Photo">
+        <FileInput
+          id="image"
+          accept="image/*"
+          {...register('image', { required: 'This field is required' })}
+        />
+      </FormRow>
 
-      <FormRow2>
+      <FormRow>
         <Button variations="secondary" type="reset">
           Cancel
         </Button>
         <Button disabled={isCreating}>Edit Cabin</Button>
-      </FormRow2>
+      </FormRow>
     </Form>
   );
 }
