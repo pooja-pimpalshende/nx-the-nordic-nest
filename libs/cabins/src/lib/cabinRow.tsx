@@ -79,7 +79,7 @@ export function CabinRow({ cabin }: CabinRowType) {
   return (
     <>
       <TableRow role="row">
-        <Img src={image ?? ''} />
+        <Img src={image ?? undefined} />
         <CabinStyle>{name}</CabinStyle>
         <div>Fits up to {maxCapacity} guest</div>
         <Price>{formatCurrency(regularPrice ?? 0)}</Price>
