@@ -1,7 +1,14 @@
 import { FieldErrors, useForm } from 'react-hook-form';
 
-import { Button, Cabin, FileInput, Form, Input, Textarea } from '@/shared';
-import { FormRow } from './FormRow';
+import {
+  Button,
+  Cabin,
+  FileInput,
+  Form,
+  FormRow,
+  Input,
+  Textarea,
+} from '@/shared';
 import { useCreateCabin, useEditCabin } from './hooks';
 
 type FormValues = Cabin;

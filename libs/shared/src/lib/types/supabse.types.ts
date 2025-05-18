@@ -146,25 +146,25 @@ export type Database = {
           breakfastPrice: number | null;
           created_at: string;
           id: number;
-          maxbookingLength: number | null;
+          maxBookingLength: number | null;
           maxGuestPerBooking: number | null;
-          minbookingLength: number | null;
+          minBookingLength: number | null;
         };
         Insert: {
           breakfastPrice?: number | null;
           created_at?: string;
           id?: number;
-          maxbookingLength?: number | null;
+          maxBookingLength?: number | null;
           maxGuestPerBooking?: number | null;
-          minbookingLength?: number | null;
+          minBookingLength?: number | null;
         };
         Update: {
           breakfastPrice?: number | null;
           created_at?: string;
           id?: number;
-          maxbookingLength?: number | null;
+          maxBookingLength?: number | null;
           maxGuestPerBooking?: number | null;
-          minbookingLength?: number | null;
+          minBookingLength?: number | null;
         };
         Relationships: [];
       };
@@ -296,3 +296,4 @@ export const Constants = {
 } as const;
 
 export type Cabin = Tables<'cabins'>;
+export type Settings = Tables<'settings'>;
