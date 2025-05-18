@@ -1,6 +1,6 @@
 import { Cabin, supabase, supabaseUrl } from '@/shared';
 
-type NewCabin = {
+type NewCabinImageType = {
   image: string | null | FileList;
 };
 
@@ -15,7 +15,10 @@ export async function getCabins(): Promise<Cabin[]> {
   return data;
 }
 
-export async function createEditCabin(newCabin: Cabin | NewCabin, id?: number) {
+export async function createEditCabin(
+  newCabin: Cabin | NewCabinImageType,
+  id?: number
+) {
   console.log('newcabin', newCabin, id);
 
   let imagePath: string | null = null;

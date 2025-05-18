@@ -6,3 +6,4 @@ export * from './lib/cabinTable';
 export * from './lib/cabinTypes';
 export * from './lib/createCabinForm';
 export * from './lib/FormRow';
+export * from './lib/hooks';
