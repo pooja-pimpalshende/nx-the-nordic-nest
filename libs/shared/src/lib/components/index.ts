@@ -6,3 +6,4 @@ export * from './Spinner';
 export * from './Form';
 export * from './FileInput';
 export * from './Textarea';
+export * from './FormRow';
