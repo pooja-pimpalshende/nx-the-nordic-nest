@@ -12,11 +12,15 @@ import {
 import { useCreateCabin, useEditCabin } from './hooks';
 
 type FormValues = Cabin;
-type CabinToEditType = {
+export type CabinToEditType = {
   cabinToEdit?: Cabin;
+  onCloseModal?: () => void;
 };
 
-export function CreateCabinForm({ cabinToEdit }: CabinToEditType) {
+export function CreateCabinForm({
+  cabinToEdit,
+  onCloseModal,
+}: CabinToEditType) {
   const { createCabin, isCreating } = useCreateCabin();
   const { editCabin, isEditing } = useEditCabin();
 
@@ -40,6 +44,7 @@ export function CreateCabinForm({ cabinToEdit }: CabinToEditType) {
         {
           onSuccess: (data) => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -49,6 +54,7 @@ export function CreateCabinForm({ cabinToEdit }: CabinToEditType) {
         {
           onSuccess: (data) => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -59,7 +65,10 @@ export function CreateCabinForm({ cabinToEdit }: CabinToEditType) {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit, onError)}
+      type={onCloseModal ? 'modal' : 'default'}
+    >
       <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"
@@ -142,7 +151,11 @@ export function CreateCabinForm({ cabinToEdit }: CabinToEditType) {
       </FormRow>
 
       <FormRow>
-        <Button variations="secondary" type="reset">
+        <Button
+          variations="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
 
