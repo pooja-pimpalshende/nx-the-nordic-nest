@@ -1,6 +1,6 @@
 import { Button, Modal } from '@/shared';
-import { useState } from 'react';
 import { CreateCabinForm } from './createCabinForm';
+import { CabinTable } from './cabinTable';
 
 export const Addcabin = () => {
   return (
@@ -12,12 +12,12 @@ export const Addcabin = () => {
         <CreateCabinForm />
       </Modal.Window>
 
-      {/* <Modal.Open opens="table">
+      <Modal.Open opens="table">
         <Button>Show table</Button>
       </Modal.Open>
       <Modal.Window name="table">
-        <CreateCabinForm />
-      </Modal.Window> */}
+        <CabinTable />
+      </Modal.Window>
     </Modal>
   );
 };
