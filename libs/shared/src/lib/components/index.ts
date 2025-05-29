@@ -7,4 +7,4 @@ export * from './Form';
 export * from './FileInput';
 export * from './Textarea';
 export * from './FormRow';
-export * from './Modal';
+export { default as Modal } from './modal';
