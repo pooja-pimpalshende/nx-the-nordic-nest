@@ -9,3 +9,4 @@ export * from './Textarea';
 export * from './FormRow';
 export { default as Modal } from './modal';
 export * from './ConfirmDelete';
+export { default as Table } from './Table';
