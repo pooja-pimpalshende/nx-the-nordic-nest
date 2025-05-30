@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Cabin, ConfirmDelete, formatCurrency, Modal } from '@/shared';
+import { Cabin, ConfirmDelete, formatCurrency, Modal, Table } from '@/shared';
 import { CreateCabinForm } from './createCabinForm';
 import { useCreateCabin, useDeleteCabin } from './hooks';
 import { HiPencil, HiSquare2Stack, HiTrash } from 'react-icons/hi2';
@@ -9,17 +9,17 @@ type CabinRowType = {
   cabin: Cabin;
 };
 
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
-  padding: 1.4rem 2.4rem;
+// const TableRow = styled.div`
+//   display: grid;
+//   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
+//   column-gap: 2.4rem;
+//   align-items: center;
+//   padding: 1.4rem 2.4rem;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
-`;
+//   &:not(:last-child) {
+//     border-bottom: 1px solid var(--color-grey-100);
+//   }
+// `;
 
 const Img = styled.img`
   display: block;
@@ -74,7 +74,7 @@ export function CabinRow({ cabin }: CabinRowType) {
   }
 
   return (
-    <TableRow role="row">
+    <Table.Row>
       <Img src={image ?? undefined} />
       <CabinStyle>{name}</CabinStyle>
       <div>Fits up to {maxCapacity} guest</div>
@@ -113,6 +113,6 @@ export function CabinRow({ cabin }: CabinRowType) {
           </Modal.Window>
         </Modal>
       </div>
-    </TableRow>
+    </Table.Row>
   );
 }
