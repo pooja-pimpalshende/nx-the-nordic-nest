@@ -8,6 +8,7 @@ import React, {
   useContext,
   useState,
 } from 'react';
+import { useOutsideClick } from '../hooks';
 
 const StyledModal = styled.div`
   position: fixed;
@@ -104,11 +105,13 @@ const Window: React.FC<{ name: string; children: ReactNode }> = ({
   if (!context) throw new Error('Open must be used within a Modal');
   const { openName, close } = context;
 
+  const ref = useOutsideClick(close);
+
   if (name !== openName) return null;
 
   return createPortal(
     <Overlay>
-      <StyledModal>
+      <StyledModal ref={ref}>
         <Button onClick={close}>
           <HiXMark />
         </Button>
