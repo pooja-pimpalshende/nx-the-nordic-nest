@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Cabin, formatCurrency, Modal } from '@/shared';
+import { Cabin, ConfirmDelete, formatCurrency, Modal } from '@/shared';
 import { CreateCabinForm } from './createCabinForm';
 import { useCreateCabin, useDeleteCabin } from './hooks';
 import { HiPencil, HiSquare2Stack, HiTrash } from 'react-icons/hi2';
@@ -99,9 +99,18 @@ export function CabinRow({ cabin }: CabinRowType) {
             <CreateCabinForm cabinToEdit={cabin} />
           </Modal.Window>
 
-          <button disabled={isDeleting} onClick={() => deleteCabin(cabinId)}>
-            <HiTrash />
-          </button>
+          <Modal.Open opens="delete">
+            <button>
+              <HiTrash />
+            </button>
+          </Modal.Open>
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="cabin"
+              disabled={isDeleting}
+              onConfirm={() => deleteCabin(cabinId)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </TableRow>
