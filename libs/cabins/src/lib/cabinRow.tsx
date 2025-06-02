@@ -5,7 +5,7 @@ import { CreateCabinForm } from './createCabinForm';
 import { useCreateCabin, useDeleteCabin } from './hooks';
 import { HiPencil, HiSquare2Stack, HiTrash } from 'react-icons/hi2';
 
-type CabinRowType = {
+export type CabinRowType = {
   cabin: Cabin;
 };
 

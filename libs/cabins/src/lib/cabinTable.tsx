@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { CabinRow } from './cabinRow';
 import { Spinner, Table } from '@/shared';
 import { useCabin } from './hooks';
+import { Cabin } from '@/shared';
+import { CabinRow } from './cabinRow';
 
 const TableHeader = styled.header`
   display: grid;
@@ -33,9 +34,13 @@ export function CabinTable() {
         <div>Discount</div>
         <div></div>
       </Table.Header>
-      {cabins?.map((cabin) => (
+      <Table.Body
+        data={cabins}
+        render={(cabin: Cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
+      />
+      {/* {cabins?.map((cabin) => (
         <CabinRow cabin={cabin} key={cabin.id} />
-      ))}
+      ))} */}
     </Table>
   );
 }
