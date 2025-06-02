@@ -1,6 +1,5 @@
 import { createContext, useContext } from 'react';
 import styled from 'styled-components';
-import { Cabin } from '@/shared';
 
 type CommonRowProps = {
   columns: string;
@@ -23,7 +22,7 @@ type TableContextType = {
 };
 
 type TableBodyProps<T> = {
-  data: T[];
+  data?: T[];
   render: (item: T) => React.ReactNode;
 };
 
@@ -121,7 +120,7 @@ const Row = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const Body = <T,>({ data, render }: TableBodyProps<T>) => {
+const Body = <T,>({ data = [], render }: TableBodyProps<T>) => {
   if (!data.length) return <Empty>No data to show at the moment</Empty>;
   return <StyledBody>{data.map(render)}</StyledBody>;
 };
