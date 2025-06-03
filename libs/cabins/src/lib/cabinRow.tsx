@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-import { Cabin, ConfirmDelete, formatCurrency, Modal, Table } from '@/shared';
+import {
+  Cabin,
+  ConfirmDelete,
+  formatCurrency,
+  Menus,
+  Modal,
+  Table,
+} from '@/shared';
 import { CreateCabinForm } from './createCabinForm';
 import { useCreateCabin, useDeleteCabin } from './hooks';
 import { HiPencil, HiSquare2Stack, HiTrash } from 'react-icons/hi2';
@@ -112,6 +119,16 @@ export function CabinRow({ cabin }: CabinRowType) {
             />
           </Modal.Window>
         </Modal>
+
+        <Menus.Menu>
+          <Menus.Toggle id={cabinId}></Menus.Toggle>
+
+          <Menus.List id={cabinId}>
+            <Menus.Button>Duplicate</Menus.Button>
+            <Menus.Button>Edit</Menus.Button>
+            <Menus.Button>Delete</Menus.Button>
+          </Menus.List>
+        </Menus.Menu>
       </div>
     </Table.Row>
   );
