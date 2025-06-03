@@ -1,11 +1,12 @@
 import { createContext, useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { IconType } from 'react-icons';
 import { HiEllipsisVertical } from 'react-icons/hi2';
 import styled from 'styled-components';
 
 type StyledListProps = {
   children: React.ReactNode;
-  position: { x: number; y: number };
+  position: { x: number; y: number } | null;
 };
 
 const Menu = styled.div`
@@ -40,8 +41,8 @@ const StyledList = styled.ul<StyledListProps>`
   box-shadow: var(--shadow-md);
   border-radius: var(--border-radius-md);
 
-  right: ${(props) => props.position.x}px;
-  top: ${(props) => props.position.y}px;
+  right: ${(props) => (props.position ? `${props.position.x}px` : `0`)};
+  top: ${(props) => (props.position ? `${props.position.y}px` : `0`)};
 `;
 
 const StyledButton = styled.button`
@@ -77,17 +78,33 @@ type MenuContextType = {
   openId: number | null;
   open: (id: number) => void;
   close: () => void;
+  position: { x: number; y: number } | null;
+  setPosition: React.Dispatch<
+    React.SetStateAction<{ x: number; y: number } | null>
+  >;
+};
+
+type MenuButtonType = {
+  children: React.ReactNode;
+  icon: React.ReactNode;
+  onClick?: () => void;
 };
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
 
 const Menus = ({ children }: { children: React.ReactNode }) => {
   const [openId, setOpenId] = useState<number | null>(null);
+  const [position, setPosition] = useState<{ x: number; y: number } | null>(
+    null
+  );
+
   const close = () => setOpenId(null);
   const open = (id: number) => setOpenId(id);
 
   return (
-    <MenuContext.Provider value={{ openId, open, close }}>
+    <MenuContext.Provider
+      value={{ openId, open, close, position, setPosition }}
+    >
       {children}
     </MenuContext.Provider>
   );
@@ -97,9 +114,20 @@ const Toggle: React.FC<MenuType> = ({ id }) => {
   const context = useContext(MenuContext);
 
   if (!context) throw new Error('Open must be used within a Modal');
-  const { openId, open, close } = context;
+  const { openId, open, close, setPosition } = context;
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const button = target.closest('button');
+
+    if (!button) return;
+
+    const rect = button.getBoundingClientRect();
+    setPosition({
+      x: window.innerWidth - rect.width - rect.x,
+      y: rect.y - rect.height + 8,
+    });
+
     openId === null || openId !== id ? open(id) : close();
   };
 
@@ -114,20 +142,31 @@ const List = ({ id, children }: { id: number; children: React.ReactNode }) => {
   const context = useContext(MenuContext);
 
   if (!context) throw new Error('Open must be used within a Modal');
-  const { openId } = context;
+  const { openId, position } = context;
 
   if (openId !== id) return null;
 
   return createPortal(
-    <StyledList position={{ x: 20, y: 20 }}>{children}</StyledList>,
+    <StyledList position={position}>{children}</StyledList>,
     document.body
   );
 };
 
-const Button = ({ children }: { children: React.ReactNode }) => {
+const Button = ({ children, icon, onClick }: MenuButtonType) => {
+  const context = useContext(MenuContext);
+  if (!context) throw new Error('Open must be used within a Modal');
+  const { close } = context;
+
+  const handleClick = () => {
+    onClick?.();
+    close();
+  };
+
   return (
     <li>
-      <StyledButton>{children}</StyledButton>
+      <StyledButton onClick={handleClick}>
+        {icon} <span>{children}</span>
+      </StyledButton>
     </li>
   );
 };
