@@ -1,3 +1,4 @@
+import { useNavigate, useSearch } from '@tanstack/react-router';
 import styled, { css } from 'styled-components';
 
 type FilterButtonProp = {
@@ -38,12 +39,38 @@ const FilterButton = styled.button<FilterButtonProp>`
   }
 `;
 
-export function Filter() {
+export function Filter({
+  filterField,
+  options,
+}: {
+  filterField: 'discount';
+  options: { value: string; label: string }[];
+}) {
+  const navigate = useNavigate({ from: 'cabins' });
+  //   const search = useSearch({ from: 'cabins' });
+
+  //   const currentFilter = search[filterField] || 'all';
+
+  function handleClick(value: string) {
+    navigate({
+      search: (prev: { discount: string }) => ({
+        ...prev,
+        [filterField]: value,
+      }),
+    });
+  }
+
   return (
     <StyledFilter>
-      <FilterButton>All</FilterButton>
-      <FilterButton>No discount</FilterButton>
-      <FilterButton>With discount</FilterButton>
+      {options.map((option) => (
+        <FilterButton
+          key={option.value}
+          onClick={() => handleClick(option.value)}
+          //   active={option.value === currentFilter}
+        >
+          {option.label}
+        </FilterButton>
+      ))}
     </StyledFilter>
   );
 }

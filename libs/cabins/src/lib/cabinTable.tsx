@@ -1,28 +1,27 @@
-import styled from 'styled-components';
 import { Menus, Spinner, Table } from '@/shared';
 import { useCabin } from './hooks';
 import { Cabin } from '@/shared';
 import { CabinRow } from './cabinRow';
-
-const TableHeader = styled.header`
-  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
-
-  background-color: var(--color-grey-50);
-  border-bottom: 1px solid var(--color-grey-100);
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  font-weight: 600;
-  color: var(--color-grey-600);
-  padding: 1.6rem 2.4rem;
-`;
+import { useSearch } from '@tanstack/react-router';
+import { cabinsRoutes } from '../router';
 
 export function CabinTable() {
   const { cabins, isPending } = useCabin();
+  const search = useSearch({ from: cabinsRoutes.id });
 
   if (isPending) return <Spinner />;
+
+  const { discount } = search;
+  const filterValue = discount || 'all';
+
+  let filteredCabins;
+  if (filterValue === 'all') filteredCabins = cabins;
+  if (filterValue === 'no-discount')
+    filteredCabins = cabins?.filter((cabin) => cabin.discount === 0);
+  if (filterValue === 'with-discount')
+    filteredCabins = cabins?.filter(
+      (cabin) => cabin.discount !== null && cabin.discount > 0
+    );
 
   return (
     <Menus>
@@ -36,7 +35,7 @@ export function CabinTable() {
           <div></div>
         </Table.Header>
         <Table.Body
-          data={cabins}
+          data={filteredCabins}
           render={(cabin: Cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
         {/* {cabins?.map((cabin) => (
