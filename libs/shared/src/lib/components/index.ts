@@ -11,3 +11,4 @@ export { default as Modal } from './modal';
 export * from './ConfirmDelete';
 export { default as Table } from './Table';
 export { default as Menus } from './Menus';
+export * from './Filter';
