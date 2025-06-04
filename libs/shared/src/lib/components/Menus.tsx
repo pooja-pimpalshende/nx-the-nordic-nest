@@ -126,7 +126,7 @@ const Toggle: React.FC<MenuType> = ({ id }) => {
     const rect = button.getBoundingClientRect();
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
-      y: rect.y - rect.height + 8,
+      y: rect.y + rect.height + 8,
     });
 
     openId === null || openId !== id ? open(id) : close();
