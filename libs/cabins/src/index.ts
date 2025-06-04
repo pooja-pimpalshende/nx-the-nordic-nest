@@ -7,3 +7,5 @@ export * from './lib/cabinTypes';
 export * from './lib/createCabinForm';
 export * from './lib/hooks';
 export * from './lib/addCabin';
+export * from './lib/TableOperations';
+export * from './lib/cabinTableOperations';
