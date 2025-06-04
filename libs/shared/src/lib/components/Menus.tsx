@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { IconType } from 'react-icons';
 import { HiEllipsisVertical } from 'react-icons/hi2';
 import styled from 'styled-components';
+import { useOutsideClick } from '../hooks';
 
 type StyledListProps = {
   children: React.ReactNode;
@@ -142,12 +143,17 @@ const List = ({ id, children }: { id: number; children: React.ReactNode }) => {
   const context = useContext(MenuContext);
 
   if (!context) throw new Error('Open must be used within a Modal');
-  const { openId, position } = context;
+
+  const { openId, position, close } = context;
+
+  const ref = useOutsideClick<HTMLUListElement>(close);
 
   if (openId !== id) return null;
 
   return createPortal(
-    <StyledList position={position}>{children}</StyledList>,
+    <StyledList position={position} ref={ref}>
+      {children}
+    </StyledList>,
     document.body
   );
 };
