@@ -1,5 +1,5 @@
 import { Filter } from '@/shared';
-import { TableOperations } from './TableOperations';
+import { TableOperations } from './tableOperations';
 
 export function CabinTableOperations() {
   return (

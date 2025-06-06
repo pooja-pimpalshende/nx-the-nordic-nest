@@ -2,17 +2,19 @@ import { Menus, Spinner, Table } from '@/shared';
 import { useCabin } from './hooks';
 import { Cabin } from '@/shared';
 import { CabinRow } from './cabinRow';
-import { useSearch } from '@tanstack/react-router';
-import { cabinsRoutes } from '../router';
+import { useRouterState } from '@tanstack/react-router';
 
 export function CabinTable() {
   const { cabins, isPending } = useCabin();
-  const search = useSearch({ from: cabinsRoutes.id });
+  // const search = useSearch({ from: cabinsRoutes.id });
+  const search = useRouterState({
+    select: (state) => state.location.search,
+  }) as { discount?: string };
 
   if (isPending) return <Spinner />;
 
-  const { discount } = search;
-  const filterValue = discount || 'all';
+  // const { discount } = search;
+  const filterValue = search.discount || 'all';
 
   let filteredCabins;
   if (filterValue === 'all') filteredCabins = cabins;

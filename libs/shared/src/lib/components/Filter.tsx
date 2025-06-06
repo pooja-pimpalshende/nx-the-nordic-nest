@@ -1,8 +1,8 @@
-import { useNavigate, useSearch } from '@tanstack/react-router';
+import { useNavigate, useRouterState } from '@tanstack/react-router';
 import styled, { css } from 'styled-components';
 
 type FilterButtonProp = {
-  active?: boolean;
+  $active?: boolean;
 };
 
 const StyledFilter = styled.div`
@@ -20,7 +20,7 @@ const FilterButton = styled.button<FilterButtonProp>`
   border: none;
 
   ${(props) =>
-    props.active &&
+    props.$active &&
     css`
       background-color: var(--color-brand-600);
       color: var(--color-brand-50);
@@ -47,9 +47,13 @@ export function Filter({
   options: { value: string; label: string }[];
 }) {
   const navigate = useNavigate({ from: 'cabins' });
-  //   const search = useSearch({ from: 'cabins' });
+  // const search = useSearch({ from: 'cabins' });
 
-  //   const currentFilter = search[filterField] || 'all';
+  const search = useRouterState({
+    select: (state) => state.location.search,
+  }) as { discount?: string };
+
+  const currentFilter = search.discount || options.at(0)?.value;
 
   function handleClick(value: string) {
     navigate({
@@ -66,7 +70,7 @@ export function Filter({
         <FilterButton
           key={option.value}
           onClick={() => handleClick(option.value)}
-          //   active={option.value === currentFilter}
+          $active={option.value === currentFilter}
         >
           {option.label}
         </FilterButton>
