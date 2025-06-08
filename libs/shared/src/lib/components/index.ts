@@ -12,3 +12,5 @@ export * from './ConfirmDelete';
 export { default as Table } from './Table';
 export { default as Menus } from './Menus';
 export * from './Filter';
+export * from './SortBy';
+export * from './Select';

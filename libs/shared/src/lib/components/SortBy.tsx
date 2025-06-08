@@ -1,6 +1,5 @@
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { Select } from './Select';
-import { Search, useSearchParams } from 'react-router-dom';
 
 export function SortBy({
   options,

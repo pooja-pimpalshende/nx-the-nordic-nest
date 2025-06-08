@@ -1,8 +1,8 @@
+import { ChangeEvent, SelectHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 type SelectProps = {
   type?: string;
-  value: string;
 };
 
 const StyledSelect = styled.select<SelectProps>`
@@ -22,15 +22,17 @@ const StyledSelect = styled.select<SelectProps>`
 export function Select({
   options,
   value,
+  type,
+  onChange,
   ...props
 }: {
   options: { value: string; label: string }[];
-  value: string;
   type: string;
-}) {
-  console.log(props);
+  value: string;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+} & SelectHTMLAttributes<HTMLSelectElement>) {
   return (
-    <StyledSelect value={value} {...props}>
+    <StyledSelect value={value} {...props} onChange={onChange}>
       {options.map((option) => (
         <option value={option.value} key={option.value}>
           {option.label}
