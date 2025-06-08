@@ -1,4 +1,4 @@
-import { Menus, Spinner, Table } from '@/shared';
+import { Menus, SortBy, Spinner, Table } from '@/shared';
 import { useCabin } from './hooks';
 import { Cabin } from '@/shared';
 import { CabinRow } from './cabinRow';
@@ -6,14 +6,13 @@ import { useRouterState } from '@tanstack/react-router';
 
 export function CabinTable() {
   const { cabins, isPending } = useCabin();
-  // const search = useSearch({ from: cabinsRoutes.id });
   const search = useRouterState({
     select: (state) => state.location.search,
-  }) as { discount?: string };
+  }) as { discount?: string; sortBy?: string };
 
   if (isPending) return <Spinner />;
 
-  // const { discount } = search;
+  //FILTER
   const filterValue = search.discount || 'all';
 
   let filteredCabins;
@@ -24,6 +23,23 @@ export function CabinTable() {
     filteredCabins = cabins?.filter(
       (cabin) => cabin.discount !== null && cabin.discount > 0
     );
+
+  //SortBy
+  const sortBy = search.sortBy || 'StartDate-asc';
+  const [field, direction] = sortBy.split('-');
+  const modifier = direction === 'asc' ? 1 : -1;
+  const sortedCabins = filteredCabins?.sort((a, b) => {
+    const aVal = a[field as keyof typeof a];
+    const bVal = b[field as keyof typeof b];
+
+    if (typeof aVal === 'number' && typeof bVal === 'number') {
+      return (aVal - bVal) * modifier;
+    }
+    if (typeof aVal === 'string' && typeof bVal === 'string') {
+      return aVal.localeCompare(bVal) * modifier;
+    }
+    return 0;
+  });
 
   return (
     <Menus>
@@ -37,7 +53,7 @@ export function CabinTable() {
           <div></div>
         </Table.Header>
         <Table.Body
-          data={filteredCabins}
+          data={sortedCabins}
           render={(cabin: Cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
         {/* {cabins?.map((cabin) => (
