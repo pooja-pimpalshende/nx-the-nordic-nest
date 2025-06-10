@@ -14,3 +14,5 @@ export { default as Menus } from './Menus';
 export * from './Filter';
 export * from './SortBy';
 export * from './Select';
+export * from './Tag';
+export * from './Empty';
