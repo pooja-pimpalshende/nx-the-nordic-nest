@@ -1,4 +1,4 @@
-import { Menus, SortBy, Spinner, Table } from '@/shared';
+import { Empty, Menus, SortBy, Spinner, Table } from '@/shared';
 import { useCabin } from './hooks';
 import { Cabin } from '@/shared';
 import { CabinRow } from './cabinRow';
@@ -11,6 +11,8 @@ export function CabinTable() {
   }) as { discount?: string; sortBy?: string };
 
   if (isPending) return <Spinner />;
+
+  if (!cabins?.length) return <Empty resourceName="cabins" />;
 
   //FILTER
   const filterValue = search.discount || 'all';
