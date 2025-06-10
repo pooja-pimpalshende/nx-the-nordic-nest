@@ -297,3 +297,4 @@ export const Constants = {
 
 export type Cabin = Tables<'cabins'>;
 export type Settings = Tables<'settings'>;
+export type Booking = Tables<'bookings'>;
