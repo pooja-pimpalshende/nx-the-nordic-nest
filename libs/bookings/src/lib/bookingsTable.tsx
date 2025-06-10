@@ -1,8 +1,8 @@
 import { Booking, Empty, Menus, Table } from '@/shared';
-import { BookingRow } from './bookingRow';
+import { BookingRow, BookingRowType } from './bookingRow';
 
 export function BookingsTable() {
-  const bookings: Booking[] = [];
+  const bookings: BookingRowType['booking'][] = [];
 
   if (!bookings.length) return <Empty resourceName="bookings" />;
   return (
