@@ -1,4 +1,4 @@
-import { Empty, Menus, SortBy, Spinner, Table } from '@/shared';
+import { Empty, Menus, Spinner, Table } from '@/shared';
 import { useCabin } from './hooks';
 import { Cabin } from '@/shared';
 import { CabinRow } from './cabinRow';

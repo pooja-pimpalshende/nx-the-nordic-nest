@@ -1,13 +1,19 @@
-import { Booking, Empty, Menus, Table } from '@/shared';
-import { BookingRow, BookingRowType } from './bookingRow';
+import { Empty, Menus, Spinner, Table } from '@/shared';
+import { BookingRow, BookingRowProps } from './bookingRow';
+import { useBookings } from './hooks';
 
 export function BookingsTable() {
-  const bookings: BookingRowType['booking'][] = [];
+  const { bookings, isPending } = useBookings();
 
-  if (!bookings.length) return <Empty resourceName="bookings" />;
+  console.log(bookings);
+  const safeBookings: BookingRowProps['booking'][] = bookings ?? [];
+
+  if (isPending) return <Spinner />;
+  if (!safeBookings.length) return <Empty resourceName="bookings" />;
+
   return (
     <Menus>
-      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+      <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
         <Table.Header>
           <div>Cabin</div>
           <div>Guest</div>
@@ -17,7 +23,7 @@ export function BookingsTable() {
         </Table.Header>
 
         <Table.Body
-          data={bookings}
+          data={safeBookings}
           render={(booking) => (
             <BookingRow key={booking.id} booking={booking} />
           )}

@@ -8,11 +8,11 @@ import {
 } from '@/shared';
 import { format, isToday } from 'date-fns';
 
-export type BookingRowType = {
+export type BookingRowProps = {
   booking: Booking & {
     guests: { fullName: string; email: string };
     cabins: { name: string };
-    numGuests: number;
+    numGuest: number;
   };
 };
 
@@ -52,13 +52,13 @@ export function BookingRow({
     startDate,
     endDate,
     numNights,
-    numGuests,
+    numGuest,
     totalPrice,
     status,
     guests: { fullName: guestName, email },
     cabins: { name: cabinName },
   },
-}: BookingRowType) {
+}: BookingRowProps) {
   const statusToTagName: Record<BookingStatus, 'blue' | 'green' | 'silver'> = {
     unconfirmed: 'blue',
     'checked-in': 'green',
