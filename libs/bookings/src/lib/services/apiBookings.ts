@@ -1,7 +1,9 @@
 import { Booking, supabase } from '@/shared';
 
 export async function getBookings(): Promise<Booking[]> {
-  const { data, error } = await supabase.from('bookings').select('*');
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*, cabins(name), guests(fullName, email)');
 
   if (error) {
     console.log(error);
