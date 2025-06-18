@@ -9,3 +9,4 @@ export * from './lib/hooks';
 export * from './lib/addCabin';
 export * from './lib/cabinTableOperations';
 export * from './lib/tableOperations';
+export * from './lib/data';
