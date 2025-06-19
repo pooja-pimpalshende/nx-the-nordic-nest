@@ -43,7 +43,7 @@ export function Filter({
   filterField,
   options,
 }: {
-  filterField: 'discount';
+  filterField: 'discount' | 'status';
   options: { value: string; label: string }[];
 }) {
   const navigate = useNavigate({ from: 'cabins' });
