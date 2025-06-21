@@ -6,7 +6,21 @@ export function BookingsTable() {
   const { bookings, isPending } = useBookings();
 
   console.log(bookings);
-  const safeBookings: BookingRowProps['booking'][] = bookings ?? [];
+
+  function isSafeBooking(
+    booking: unknown
+  ): booking is BookingRowProps['booking'] {
+    return (
+      typeof booking === 'object' &&
+      booking !== null &&
+      'guests' in booking &&
+      'cabins' in booking &&
+      'numGuest' in booking
+    );
+  }
+  const safeBookings: BookingRowProps['booking'][] = (bookings ?? []).filter(
+    isSafeBooking
+  );
 
   if (isPending) return <Spinner />;
   if (!safeBookings.length) return <Empty resourceName="bookings" />;
