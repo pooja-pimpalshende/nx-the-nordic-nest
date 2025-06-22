@@ -9,9 +9,8 @@ export function cabinsRoutes(): RouteConfig[] {
         import('./lib/cabins').then((res) => ({
           default: res.Cabins,
         })),
-      validateSearch: (search): { discount?: string; status?: string } => ({
+      validateSearch: (search): { discount?: string } => ({
         discount: search.discount ?? 'all',
-        status: search.status ?? 'all',
       }),
     },
   ];
