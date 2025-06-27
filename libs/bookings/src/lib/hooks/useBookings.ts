@@ -13,13 +13,17 @@ export function useBookings() {
       : { field: 'status', value: filterValue };
   // { field: 'totalPrice', value: 5000, method: 'gte' };
 
+  const sortByRaw = searchParams.sortBy || 'startDate-desc';
+  const [field, direction] = sortByRaw.split('-');
+  const sortBy = { field, direction };
+
   const {
     isPending,
     data: bookings,
     error,
   } = useQuery({
-    queryKey: ['bookings', filter],
-    queryFn: () => getBookings({ filter }),
+    queryKey: ['bookings', filter, sortBy],
+    queryFn: () => getBookings({ filter, sortBy }),
   });
 
   return { isPending, bookings, error };
