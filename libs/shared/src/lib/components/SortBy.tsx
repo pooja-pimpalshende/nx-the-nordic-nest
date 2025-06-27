@@ -6,7 +6,7 @@ export function SortBy({
 }: {
   options: { value: string; label: string }[];
 }) {
-  const navigate = useNavigate({ from: 'cabins' });
+  const navigate = useNavigate();
 
   const search = useRouterState({
     select: (state) => state.location.search,
@@ -16,10 +16,10 @@ export function SortBy({
 
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
     navigate({
-      search: (prev: { sortBy: string }) => ({
+      search: ((prev: { sortBy: string }) => ({
         ...prev,
         sortBy: e.target.value,
-      }),
+      })) as any,
     });
   }
 
