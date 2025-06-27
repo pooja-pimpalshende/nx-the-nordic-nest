@@ -1,4 +1,4 @@
-import { useNavigate, useRouterState } from '@tanstack/react-router';
+import { useMatchRoute, useNavigate, useRouter } from '@tanstack/react-router';
 import styled, { css } from 'styled-components';
 
 type FilterButtonProp = {
@@ -46,21 +46,28 @@ export function Filter({
   filterField: 'discount' | 'status';
   options: { value: string; label: string }[];
 }) {
-  const navigate = useNavigate({ from: 'cabins' });
-  // const search = useSearch({ from: 'cabins' });
+  const matchRoute = useMatchRoute();
+  const navigate = useNavigate({});
 
-  const search = useRouterState({
-    select: (state) => state.location.search,
-  }) as { discount?: string };
+  const router = useRouter();
 
-  const currentFilter = search.discount || options.at(0)?.value;
+  const currentMatch = router.state.location;
+
+  // const match = matchRoute({ to: currentMatch.pathname });
+
+  // const search = useRouterState({
+  //   select: (state) => state.location.search,
+  // }) as { discount?: string };
+
+  const currentSearch = currentMatch.search;
+  const currentFilter = currentSearch[filterField] || options.at(0)?.value;
 
   function handleClick(value: string) {
     navigate({
-      search: (prev: { discount: string }) => ({
+      search: ((prev: Record<string, string>) => ({
         ...prev,
         [filterField]: value,
-      }),
+      })) as any,
     });
   }
 
