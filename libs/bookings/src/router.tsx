@@ -4,7 +4,7 @@ export function bookingsRoutes(): RouteConfig[] {
   return [
     {
       path: '/bookings',
-      id: 'bookings',
+      id: '/app-layout/bookings',
       component: () =>
         import('./lib/bookings').then((res) => ({
           default: res.Bookings,
