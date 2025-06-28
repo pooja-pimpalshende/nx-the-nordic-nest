@@ -16,4 +16,5 @@ export * from './SortBy';
 export * from './Select';
 export * from './Tag';
 export * from './Empty';
-export * from './tableOperations';
+export * from './TableOperations';
+export * from './Pagination';
