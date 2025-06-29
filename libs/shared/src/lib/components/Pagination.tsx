@@ -1,3 +1,5 @@
+import { useNavigate, useRouter, useSearch } from '@tanstack/react-router';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import styled from 'styled-components';
 
 type PaginationButtonProp = {
@@ -59,12 +61,54 @@ const PaginationButton = styled.button<PaginationButtonProp>`
   }
 `;
 
-export const Pagination = () => {
+const PAGE_SIZE = 10;
+
+export const Pagination = ({ count }: { count: number }) => {
+  const search = useSearch({ from: '/app-layout/bookings' });
+  const navigate = useNavigate();
+
+  const currentPage = !search.page ? 1 : Number(search.page);
+
+  const pageCount = Math.ceil(count / PAGE_SIZE);
+
+  const nextPage = () => {
+    navigate({
+      search: ((prev: { page: number }) => ({
+        ...prev,
+        page: currentPage === pageCount ? currentPage : currentPage + 1,
+      })) as any,
+    });
+  };
+
+  const prevPage = () => {
+    navigate({
+      search: ((prev: { page: number }) => ({
+        ...prev,
+        page: currentPage === 1 ? currentPage : currentPage - 1,
+      })) as any,
+    });
+  };
+
   return (
     <StyledPagination>
       <p>
-        Showing <span>1</span> to <span>10</span> of <span>23</span> results
+        Showing <span>1</span> to <span>10</span> of <span>{count}</span>
+        results
       </p>
+
+      <Buttons>
+        <PaginationButton onClick={prevPage} disabled={currentPage === 1}>
+          <HiChevronLeft />
+          <span>Previous</span>
+        </PaginationButton>
+        <PaginationButton
+          onClick={nextPage}
+          disabled={currentPage === pageCount}
+        >
+          <span>Next</span>
+          <HiChevronRight />
+        </PaginationButton>
+      </Buttons>
     </StyledPagination>
   );
 };
