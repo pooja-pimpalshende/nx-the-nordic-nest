@@ -9,8 +9,9 @@ export function bookingsRoutes(): RouteConfig[] {
         import('./lib/bookings').then((res) => ({
           default: res.Bookings,
         })),
-      validateSearch: (search): { status?: string } => ({
+      validateSearch: (search): { status?: string; page?: string } => ({
         status: search.status ?? 'all',
+        page: search.page || '1',
       }),
     },
   ];
