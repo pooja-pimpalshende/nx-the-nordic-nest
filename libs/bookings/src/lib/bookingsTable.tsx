@@ -1,4 +1,4 @@
-import { Empty, Menus, Spinner, Table } from '@/shared';
+import { Empty, Menus, Pagination, Spinner, Table } from '@/shared';
 import { BookingRow, BookingRowProps } from './bookingRow';
 import { useBookings } from './hooks';
 
@@ -42,6 +42,10 @@ export function BookingsTable() {
             <BookingRow key={booking.id} booking={booking} />
           )}
         />
+
+        <Table.Footer>
+          <Pagination count={45} />
+        </Table.Footer>
       </Table>
     </Menus>
   );
