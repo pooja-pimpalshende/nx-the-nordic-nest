@@ -44,7 +44,7 @@ export function BookingsTable() {
         />
 
         <Table.Footer>
-          <Pagination count={45} />
+          <Pagination count={5} />
         </Table.Footer>
       </Table>
     </Menus>
