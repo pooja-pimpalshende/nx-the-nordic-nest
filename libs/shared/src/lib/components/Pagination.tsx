@@ -1,6 +1,7 @@
 import { useNavigate, useRouter, useSearch } from '@tanstack/react-router';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import styled from 'styled-components';
+import { PAGE_SIZE } from '../utils/constants';
 
 type PaginationButtonProp = {
   $active?: boolean;
@@ -60,8 +61,6 @@ const PaginationButton = styled.button<PaginationButtonProp>`
     color: var(--color-brand-50);
   }
 `;
-
-const PAGE_SIZE = 10;
 
 export const Pagination = ({ count }: { count: number }) => {
   const search = useSearch({ from: '/app-layout/bookings' });
