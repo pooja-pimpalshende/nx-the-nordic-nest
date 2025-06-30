@@ -3,7 +3,7 @@ import { BookingRow, BookingRowProps } from './bookingRow';
 import { useBookings } from './hooks';
 
 export function BookingsTable() {
-  const { bookings, isPending } = useBookings();
+  const { bookings, isPending, count } = useBookings();
 
   console.log(bookings);
 
@@ -44,7 +44,7 @@ export function BookingsTable() {
         />
 
         <Table.Footer>
-          <Pagination count={5} />
+          <Pagination count={count} />
         </Table.Footer>
       </Table>
     </Menus>

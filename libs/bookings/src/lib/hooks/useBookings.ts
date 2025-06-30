@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getBookings } from '../services';
 import { useSearch } from '@tanstack/react-router';
+import { Booking } from '@/shared';
 
 export function useBookings() {
   const searchParams = useSearch({ from: '/app-layout/bookings' });
@@ -16,15 +17,18 @@ export function useBookings() {
   const sortByRaw = searchParams.sortBy || 'startDate-desc';
   const [field, direction] = sortByRaw.split('-');
   const sortBy = { field, direction };
+  const page = !searchParams.page ? 1 : Number(searchParams.page);
 
-  const {
-    isPending,
-    data: bookings,
-    error,
-  } = useQuery({
-    queryKey: ['bookings', filter, sortBy],
-    queryFn: () => getBookings({ filter, sortBy }),
+  const { isPending, data, error } = useQuery<{
+    data: Booking[];
+    count: number | null;
+  }>({
+    queryKey: ['bookings', filter, sortBy, page],
+    queryFn: () => getBookings({ filter, sortBy, page }),
   });
 
-  return { isPending, bookings, error };
+  const bookings = data?.data ?? [];
+  const count = data?.count ?? 0;
+
+  return { isPending, bookings, error, count };
 }
