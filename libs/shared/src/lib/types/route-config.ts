@@ -6,4 +6,5 @@ export type RouteConfig = {
     search: Record<string, string>,
     page: number
   ) => Record<string, string>;
+  children?: RouteConfig[];
 };

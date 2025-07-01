@@ -14,5 +14,16 @@ export function bookingsRoutes(): RouteConfig[] {
         page: search.page || '1',
       }),
     },
+
+    // children: [
+    {
+      path: '/bookings/$bookingId',
+      id: '/bookings/$bookingId',
+      component: () =>
+        import('./lib/booking').then((res) => ({
+          default: res.Booking,
+        })),
+    },
+    // ],
   ];
 }
