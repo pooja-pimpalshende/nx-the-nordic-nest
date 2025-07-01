@@ -18,3 +18,5 @@ export * from './Tag';
 export * from './Empty';
 export * from './TableOperations';
 export * from './Pagination';
+export * from './ButtonText';
+export * from './ButtonGroup';
