@@ -3,10 +3,13 @@ import {
   Booking,
   formatCurrency,
   formatDistanceFromNow,
+  Menus,
   Table,
   Tag,
 } from '@/shared';
 import { format, isToday } from 'date-fns';
+import { HiEye } from 'react-icons/hi2';
+import { useNavigate } from '@tanstack/react-router';
 
 export type BookingRowProps = {
   booking: Booking & {
@@ -59,6 +62,7 @@ export function BookingRow({
     cabins: { name: cabinName },
   },
 }: BookingRowProps) {
+  const navigate = useNavigate();
   const statusToTagName: Record<BookingStatus, 'blue' | 'green' | 'silver'> = {
     unconfirmed: 'blue',
     'checked-in': 'green',
@@ -93,6 +97,18 @@ export function BookingRow({
       )}
 
       {totalPrice && <Amount>{formatCurrency(totalPrice)}</Amount>}
+
+      <Menus.Menu>
+        <Menus.Toggle id={bookingId} />
+        <Menus.List id={bookingId}>
+          <Menus.Button
+            icon={<HiEye />}
+            onClick={() => navigate({ to: `/bookings/${bookingId}` })}
+          >
+            See Deatils
+          </Menus.Button>
+        </Menus.List>
+      </Menus.Menu>
     </Table.Row>
   );
 }
