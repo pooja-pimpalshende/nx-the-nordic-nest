@@ -18,7 +18,7 @@ export function bookingsRoutes(): RouteConfig[] {
     // children: [
     {
       path: '/bookings/$bookingId',
-      id: '/bookings/$bookingId',
+      id: '/app-layout/bookings/$bookingId',
       component: () =>
         import('./lib/booking').then((res) => ({
           default: res.Booking,
