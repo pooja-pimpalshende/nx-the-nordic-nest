@@ -1,0 +1,9 @@
+{
+  "name": "check-in-out",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/check-in-out/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project check-in-out --web",
+  "targets": {}
+}
