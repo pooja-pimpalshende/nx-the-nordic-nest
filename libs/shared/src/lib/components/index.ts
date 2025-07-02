@@ -20,3 +20,5 @@ export * from './TableOperations';
 export * from './Pagination';
 export * from './ButtonText';
 export * from './ButtonGroup';
+export * from './Flag';
+export * from './DataItem';
