@@ -4,6 +4,7 @@ import { cabinsRoutes } from '@/cabins';
 import { dashboardRoutes } from '@/dashboard';
 import { settingsRoutes } from '@/settings';
 import { usersRoutes } from '@/users';
+import { checkInRoutes } from '@/checkin';
 
 export const creteApplicationRoute = () => {
   return [
@@ -13,5 +14,6 @@ export const creteApplicationRoute = () => {
     ...settingsRoutes(),
     ...usersRoutes(),
     ...bookingsRoutes(),
+    ...checkInRoutes(),
   ];
 };

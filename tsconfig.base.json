@@ -19,11 +19,13 @@
       "@/bookings": ["libs/bookings/src/index.ts"],
       "@/cabins": ["libs/cabins/src/index.ts"],
       "@/dashboard": ["libs/dashboard/src/index.ts"],
+      "@/layout": ["libs/layout/src/index.ts"],
       "@/login": ["libs/login/src/index.ts"],
       "@/settings": ["libs/settings/src/index.ts"],
       "@/shared": ["libs/shared/src/index.ts"],
       "@/users": ["libs/users/src/index.ts"],
-      "@/layout": ["libs/layout/src/index.ts"],
+      "@/checkin": ["libs/check-in-out/src/index.ts"],
+      "@nx-the-nordic-nest/check-in-out": ["libs/check-in-out/src/index.ts"],
       "@tanstack/react-query": ["node_modules/@tanstack/react-query"],
       "@tanstack/react-query-devtools": [
         "node_modules/@tanstack/react-query-devtools"
