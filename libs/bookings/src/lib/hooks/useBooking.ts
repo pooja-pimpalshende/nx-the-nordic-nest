@@ -3,7 +3,8 @@ import { getBooking } from '../services';
 import { useParams } from '@tanstack/react-router';
 
 export function useBooking() {
-  const params = useParams({ from: '/app-layout/bookings/$bookingId' });
+  // const params = useParams({ from: '/app-layout/bookings/$bookingId' });
+  const params = useParams({ strict: false });
   const bookingId = params.bookingId;
   const {
     isPending,

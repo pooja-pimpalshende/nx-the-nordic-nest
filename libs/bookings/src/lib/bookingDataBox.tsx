@@ -13,17 +13,7 @@ import {
   HiOutlineHomeModern,
 } from 'react-icons/hi2';
 import styled from 'styled-components';
-
-export type BookingExtendedxProps = Booking & {
-  guests: {
-    fullName: string | null;
-    email: string | null;
-    country: string | null;
-    countryFlag: string | null;
-    nationalID: string | null;
-  } | null;
-  cabins: { name: string };
-};
+import { BookingExtendedxProps } from './types';
 
 type BookingdataBoxProps = { booking: BookingExtendedxProps };
 
@@ -200,14 +190,15 @@ export const BookingdataBox: React.FC<BookingdataBoxProps> = ({ booking }) => {
         </DataItem>
 
         <Price isPaid={isPaid}>
-          {totalPrice && hasBreakfast && (
+          {totalPrice && (
             <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
               {formatCurrency(totalPrice)}
 
-              {hasBreakfast &&
-                ` (${formatCurrency(cabinPrice ?? 0)} cabin + ${formatCurrency(
-                  extraPrice ?? 0
-                )} breakfast)`}
+              {hasBreakfast
+                ? ` (${formatCurrency(
+                    cabinPrice ?? 0
+                  )} cabin + ${formatCurrency(extraPrice ?? 0)} breakfast)`
+                : ''}
             </DataItem>
           )}
 
