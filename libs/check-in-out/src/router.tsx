@@ -6,8 +6,16 @@ export function checkInRoutes(): RouteConfig[] {
       path: '/checkin',
       id: 'checkin',
       component: () =>
-        import('./lib/checkInBooking').then((res) => ({
-          default: res.CheckInBooking,
+        import('./lib/checkin').then((res) => ({
+          default: res.Checkin,
+        })),
+    },
+    {
+      path: '/checkin/$bookingId',
+      id: '/app-layout/checkin/$bookingId',
+      component: () =>
+        import('./lib/checkin').then((res) => ({
+          default: res.Checkin,
         })),
     },
   ];
