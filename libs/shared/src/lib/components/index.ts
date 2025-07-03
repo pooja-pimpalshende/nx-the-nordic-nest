@@ -22,3 +22,4 @@ export * from './ButtonText';
 export * from './ButtonGroup';
 export * from './Flag';
 export * from './DataItem';
+export * from './CheckBox';
