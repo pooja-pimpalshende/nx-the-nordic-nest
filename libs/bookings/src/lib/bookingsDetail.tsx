@@ -10,7 +10,9 @@ import {
 } from '@/shared';
 import styled from 'styled-components';
 import { useBooking } from './hooks';
-import { BookingdataBox, BookingExtendedxProps } from './bookingDataBox';
+import { BookingdataBox } from './bookingDataBox';
+import { useNavigate } from '@tanstack/react-router';
+import { BookingExtendedxProps } from './types';
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -21,6 +23,7 @@ const HeadingGroup = styled.div`
 export const BookingDetail = () => {
   const { booking, isPending } = useBooking();
   const moveBack = useMoveBack();
+  const navigate = useNavigate();
 
   if (isPending) return <Spinner />;
 
@@ -59,6 +62,11 @@ export const BookingDetail = () => {
       <BookingdataBox booking={booking as BookingExtendedxProps} />
 
       <ButtonGroup>
+        {status === 'unconfirmed' && (
+          <Button onClick={() => navigate({ to: `/checkin/${id}` })}>
+            Check in
+          </Button>
+        )}
         <Button variations="secondary" onClick={moveBack}>
           Back
         </Button>
