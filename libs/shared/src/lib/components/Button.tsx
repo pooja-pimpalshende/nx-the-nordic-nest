@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
@@ -7,6 +8,7 @@ type ButtonProps = {
   type?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
+  icon?: ReactElement;
 };
 
 const sizes = {

@@ -89,6 +89,7 @@ type MenuButtonType = {
   children: React.ReactNode;
   icon: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);

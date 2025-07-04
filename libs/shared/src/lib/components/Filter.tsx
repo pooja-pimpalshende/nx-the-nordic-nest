@@ -67,6 +67,7 @@ export function Filter({
       search: ((prev: Record<string, string>) => ({
         ...prev,
         [filterField]: value,
+        page: 1,
       })) as any,
     });
   }
