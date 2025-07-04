@@ -1,5 +1,5 @@
 import {
-  Booking,
+  BookingExtendedxProps,
   DataItem,
   Flag,
   formatCurrency,
@@ -13,8 +13,6 @@ import {
   HiOutlineHomeModern,
 } from 'react-icons/hi2';
 import styled from 'styled-components';
-import { BookingExtendedxProps } from './types';
-
 type BookingdataBoxProps = { booking: BookingExtendedxProps };
 
 type PriceProps = {

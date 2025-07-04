@@ -14,6 +14,7 @@ export default [
         'error',
         {
           enforceBuildableLibDependency: true,
+          'import/no-cycle': ['error', { maxDepth: '∞' }],
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
           depConstraints: [
             {
