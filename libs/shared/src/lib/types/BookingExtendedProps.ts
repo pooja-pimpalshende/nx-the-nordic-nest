@@ -1,4 +1,4 @@
-import { Booking } from '@/shared';
+import { Booking } from './supabse.types';
 
 export type BookingExtendedxProps = Booking & {
   guests: {
