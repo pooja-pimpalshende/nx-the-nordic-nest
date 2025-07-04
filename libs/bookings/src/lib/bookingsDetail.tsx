@@ -1,8 +1,11 @@
 import {
+  BookingExtendedxProps,
   Button,
   ButtonGroup,
   ButtonText,
+  ConfirmDelete,
   Heading,
+  Modal,
   Row,
   Spinner,
   Tag,
@@ -10,9 +13,11 @@ import {
 } from '@/shared';
 import styled from 'styled-components';
 import { useBooking } from './hooks';
-import { BookingdataBox } from './bookingDataBox';
+import { BookingdataBox } from './bookingdataBox';
 import { useNavigate } from '@tanstack/react-router';
-import { BookingExtendedxProps } from './types';
+import { HiArrowUpOnSquare } from 'react-icons/hi2';
+import { useCheckout } from '@/checkin';
+import { useDeleteBooking } from './hooks/useDeleteBooking';
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -22,6 +27,8 @@ const HeadingGroup = styled.div`
 
 export const BookingDetail = () => {
   const { booking, isPending } = useBooking();
+  const { checkout, isCheckingOut } = useCheckout();
+  const { deleteBooking, isDeleting } = useDeleteBooking();
   const moveBack = useMoveBack();
   const navigate = useNavigate();
 
@@ -67,6 +74,35 @@ export const BookingDetail = () => {
             Check in
           </Button>
         )}
+
+        {status === 'checked-in' && (
+          <Button
+            icon={<HiArrowUpOnSquare />}
+            onClick={() => {
+              checkout(id);
+            }}
+            disabled={isCheckingOut}
+          >
+            Check out
+          </Button>
+        )}
+
+        <Modal>
+          <Modal.Open opens="delete">
+            <Button variations="danger">Delete Booking</Button>
+          </Modal.Open>
+
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="booking"
+              disabled={isDeleting}
+              onConfirm={() =>
+                deleteBooking(id, { onSettled: () => window.history.go(-1) })
+              }
+            />
+          </Modal.Window>
+        </Modal>
+
         <Button variations="secondary" onClick={moveBack}>
           Back
         </Button>
