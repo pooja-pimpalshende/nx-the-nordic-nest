@@ -3,16 +3,15 @@ import styled from 'styled-components';
 const StyledLogo = styled.div`
   text-align: center;
 `;
-
 const Img = styled.img`
   height: 18rem;
   width: auto;
 `;
-
-export function Logo() {
+export const Logo = () => {
+  const src = '/logo-light.png';
   return (
     <StyledLogo>
-      <Img src="/logo-light.png" alt="logo" />
+      <Img src={src} alt="logo" />
     </StyledLogo>
   );
-}
+};
