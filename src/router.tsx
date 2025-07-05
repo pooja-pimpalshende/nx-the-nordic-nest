@@ -13,7 +13,6 @@ import { creteApplicationRoute } from './app/routing-config';
 import { createRoutes } from './app/create-routes';
 import { loginRoutes } from '@/login';
 import { GlobalStyles } from '@/shared';
-import styled from 'styled-components';
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -28,7 +27,7 @@ const rootRoute = createRootRoute({
 const appRoute = createRoute({
   getParentRoute: () => rootRoute,
   id: 'app-layout',
-  // component: App,
+  component: App,
 });
 
 const indexRoute = createRoute({
