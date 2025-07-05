@@ -12,7 +12,6 @@ const StyledApp = styled.div`
 export function App() {
   return (
     <>
-      <GlobalStyles />
       <StyledApp>
         <Layout />
       </StyledApp>
