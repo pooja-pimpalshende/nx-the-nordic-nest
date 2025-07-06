@@ -1,4 +1,6 @@
+import { Heading, Logo } from '@/shared';
 import styled from 'styled-components';
+import { LoginForm } from './loginForm';
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -6,14 +8,16 @@ const LoginLayout = styled.main`
   grid-template-columns: 48rem;
   align-content: center;
   justify-content: center;
-  gap: 3.2rem;
+  /* gap: 3.2rem; */
   background-color: var(--color-grey-50);
 `;
 
 export function Login() {
   return (
     <LoginLayout>
-      <h1>Welcome to Login!</h1>
+      <Logo />
+      <Heading as="h4">Log in to your account</Heading>
+      <LoginForm />
     </LoginLayout>
   );
 }
