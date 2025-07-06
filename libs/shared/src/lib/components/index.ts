@@ -23,3 +23,6 @@ export * from './ButtonGroup';
 export * from './Flag';
 export * from './DataItem';
 export * from './CheckBox';
+export * from './FormRowVertical';
+export * from './Logo';
+export * from './SpinnerMini';
