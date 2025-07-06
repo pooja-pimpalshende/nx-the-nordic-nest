@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Logo } from './Logo';
 import { MainNav } from './MainNav';
 import { Uploader } from './uploader';
+import { Logo } from '@/shared';
 
 const StyledSidebar = styled.aside`
   background-color: var(--color-grey-0);
