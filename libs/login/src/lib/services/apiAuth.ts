@@ -1,6 +1,6 @@
 import { supabase } from '@/shared';
 
-export async function LoginApi({
+export async function loginApi({
   email,
   password,
 }: {
@@ -31,4 +31,11 @@ export async function getCurrentUser() {
   }
 
   return data?.user;
+}
+
+export async function logoutApi() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    throw new Error(error.message);
+  }
 }
