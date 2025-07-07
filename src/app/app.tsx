@@ -1,6 +1,7 @@
 import { GlobalStyles } from '@/shared';
 import styled from 'styled-components';
 import { Layout } from '@/layout';
+import { ProtectedRoute } from './protectedRoute';
 
 const StyledApp = styled.div`
   display: grid;
@@ -12,9 +13,11 @@ const StyledApp = styled.div`
 export function App() {
   return (
     <>
-      <StyledApp>
-        <Layout />
-      </StyledApp>
+      <ProtectedRoute>
+        <StyledApp>
+          <Layout />
+        </StyledApp>
+      </ProtectedRoute>
     </>
   );
 }
