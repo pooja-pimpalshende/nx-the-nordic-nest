@@ -5,3 +5,4 @@ export * from './lib/services';
 export * from './lib/utils/helpers';
 export * from './lib/hooks';
 export * from './lib/utils/constants';
+export * from './lib/context';
