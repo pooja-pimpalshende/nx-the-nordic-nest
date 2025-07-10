@@ -1,4 +1,4 @@
-import { Booking, PAGE_SIZE, supabase } from '@/shared';
+import { Booking, getToday, PAGE_SIZE, supabase } from '@/shared';
 
 export async function getBookings({
   filter,
@@ -45,8 +45,38 @@ export async function getBooking(id: number) {
     .single();
 
   if (error) {
-    console.log(error);
+    console.error(error);
     throw new Error('Booking not found');
+  }
+
+  return data;
+}
+
+export async function getBookingAfterDate(date: string) {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('created_at,totalPrice,extraPrice')
+    .gte('created_at', date)
+    .lte('created_at', getToday({ end: true }));
+
+  if (error) {
+    console.error(error);
+    throw new Error('Booking could not get loaded');
+  }
+
+  return data;
+}
+
+export async function getStaysAfterDate(date: string) {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*,guests(fullName)')
+    .gte('startDate', date)
+    .lte('startDate', getToday());
+
+  if (error) {
+    console.error(error);
+    throw new Error('Booking could not get loaded');
   }
 
   return data;
@@ -61,7 +91,7 @@ export async function updateBooking(id: number, obj: Partial<Booking>) {
     .single();
 
   if (error) {
-    console.log(error);
+    console.error(error);
     throw new Error('Booking could not be updated');
   }
 
