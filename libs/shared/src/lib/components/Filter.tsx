@@ -43,7 +43,7 @@ export function Filter({
   filterField,
   options,
 }: {
-  filterField: 'discount' | 'status';
+  filterField: 'discount' | 'status' | 'last';
   options: { value: string; label: string }[];
 }) {
   const matchRoute = useMatchRoute();
@@ -62,12 +62,14 @@ export function Filter({
   const currentSearch = currentMatch.search;
   const currentFilter = currentSearch[filterField] || options.at(0)?.value;
 
+  const isBookingRoute = currentMatch.pathname.includes('/bookings');
+
   function handleClick(value: string) {
     navigate({
       search: ((prev: Record<string, string>) => ({
         ...prev,
         [filterField]: value,
-        page: 1,
+        ...(isBookingRoute ? { page: 1 } : {}),
       })) as any,
     });
   }

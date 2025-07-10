@@ -27,3 +27,4 @@ export * from './FormRowVertical';
 export * from './Logo';
 export * from './SpinnerMini';
 export * from './ButtonIcon';
+export * from './DashboardBox';
