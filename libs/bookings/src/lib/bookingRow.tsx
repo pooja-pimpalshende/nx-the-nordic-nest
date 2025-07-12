@@ -72,7 +72,7 @@ export function BookingRow({
   },
 }: BookingRowProps) {
   const navigate = useNavigate();
-  const { checkout, isCheckingOut } = useCheckout();
+  const { checkout, isCheckingOut } = useCheckout('/bookings');
   const { deleteBooking, isDeleting } = useDeleteBooking();
 
   const statusToTagName: Record<BookingStatus, 'blue' | 'green' | 'silver'> = {

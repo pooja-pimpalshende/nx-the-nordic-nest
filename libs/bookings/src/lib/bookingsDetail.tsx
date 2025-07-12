@@ -27,7 +27,7 @@ const HeadingGroup = styled.div`
 
 export const BookingDetail = () => {
   const { booking, isPending } = useBooking();
-  const { checkout, isCheckingOut } = useCheckout();
+  const { checkout, isCheckingOut } = useCheckout('/bookings');
   const { deleteBooking, isDeleting } = useDeleteBooking();
   const moveBack = useMoveBack();
   const navigate = useNavigate();

@@ -1,3 +1,4 @@
+import { LinkComponent } from '@tanstack/react-router';
 import { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
@@ -9,6 +10,8 @@ type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   icon?: ReactElement;
+  as?: LinkComponent<'a'>;
+  to?: string;
 };
 
 const sizes = {

@@ -109,6 +109,14 @@ export function Uploader() {
     await createCabins();
     await createBookings();
   }
+
+  async function uploadBookings() {
+    setIsLoading(true);
+    await deleteBookings();
+    await createBookings();
+    setIsLoading(false);
+  }
+
   return (
     <div
       style={{
@@ -126,7 +134,9 @@ export function Uploader() {
       <Button onClick={uploadAll} disabled={isLoading}>
         Upload ALL
       </Button>
-      <Button>Upload bookings ONLY</Button>
+      <Button onClick={uploadBookings} disabled={isLoading}>
+        Upload bookings ONLY
+      </Button>
     </div>
   );
 }
