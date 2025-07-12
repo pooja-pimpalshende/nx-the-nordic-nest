@@ -82,6 +82,23 @@ export async function getStaysAfterDate(date: string) {
   return data;
 }
 
+export async function getStaysTodaysActivity() {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*, guests(fullName, nationality, countryFlag)')
+    .or(
+      `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.checked-in,endDate.eq.${getToday()})`
+    )
+    .order('created_at');
+
+  if (error) {
+    console.error(error);
+    throw new Error('Booking could not get loaded');
+  }
+
+  return data;
+}
+
 export async function updateBooking(id: number, obj: Partial<Booking>) {
   const { data, error } = await supabase
     .from('bookings')
