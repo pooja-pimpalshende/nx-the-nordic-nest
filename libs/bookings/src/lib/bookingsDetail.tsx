@@ -14,7 +14,7 @@ import {
 } from '@/shared';
 import styled from 'styled-components';
 import { useBooking } from './hooks';
-import { BookingdataBox } from './bookingdataBox';
+import { BookingdataBox } from './bookingDataBox';
 import { useNavigate } from '@tanstack/react-router';
 import { HiArrowUpOnSquare } from 'react-icons/hi2';
 import { useCheckout } from '@/checkin';
