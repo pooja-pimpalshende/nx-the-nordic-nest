@@ -119,6 +119,7 @@ const Toggle: React.FC<MenuType> = ({ id }) => {
   const { openId, open, close, setPosition } = context;
 
   const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     const target = e.target as HTMLElement;
     const button = target.closest('button');
 
@@ -147,7 +148,7 @@ const List = ({ id, children }: { id: number; children: React.ReactNode }) => {
 
   const { openId, position, close } = context;
 
-  const ref = useOutsideClick<HTMLUListElement>(close);
+  const ref = useOutsideClick<HTMLUListElement>(close, false);
 
   if (openId !== id) return null;
 
