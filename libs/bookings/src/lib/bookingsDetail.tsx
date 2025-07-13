@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   ButtonText,
   ConfirmDelete,
+  Empty,
   Heading,
   Modal,
   Row,
@@ -34,10 +35,9 @@ export const BookingDetail = () => {
 
   if (isPending) return <Spinner />;
 
-  if (!booking) return 'No booking';
+  if (!booking) return <Empty resourceName="booking" />;
 
   const { status, id } = booking;
-  console.log('status, bookingId', status, id);
 
   const statusToTagName: Record<
     'unconfirmed' | 'checked-in' | 'checked-out',

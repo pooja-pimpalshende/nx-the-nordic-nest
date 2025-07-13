@@ -100,6 +100,7 @@ export function CabinRow({ cabin }: CabinRowType) {
               <Menus.Button
                 icon={<HiSquare2Stack />}
                 onClick={handleOnDuplicate}
+                disabled={isCreating}
               >
                 Duplicate
               </Menus.Button>
@@ -109,7 +110,9 @@ export function CabinRow({ cabin }: CabinRowType) {
               </Modal.Open>
 
               <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
+                <Menus.Button icon={<HiTrash />} disabled={isDeleting}>
+                  Delete
+                </Menus.Button>
               </Modal.Open>
             </Menus.List>
 

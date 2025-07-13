@@ -28,3 +28,4 @@ export * from './Logo';
 export * from './SpinnerMini';
 export * from './ButtonIcon';
 export * from './DashboardBox';
+export * from './ErrorFallback';

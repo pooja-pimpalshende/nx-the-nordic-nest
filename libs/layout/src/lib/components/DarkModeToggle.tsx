@@ -5,7 +5,7 @@ export function DarkModeToggle() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   return (
     <ButtonIcon onClick={() => toggleDarkMode(isDarkMode)}>
-      {isDarkMode ? <HiOutlineMoon /> : <HiOutlineSun />}
+      {isDarkMode ? <HiOutlineSun /> : <HiOutlineMoon />}
     </ButtonIcon>
   );
 }

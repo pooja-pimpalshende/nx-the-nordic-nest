@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useLogin } from './hooks';
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState('jane@example.com');
-  const [password, setPassword] = useState('123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { login, isPending } = useLogin();
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
