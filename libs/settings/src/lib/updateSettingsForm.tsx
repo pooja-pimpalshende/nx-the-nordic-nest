@@ -19,7 +19,6 @@ export function UpdateSettingsForm() {
     field: keyof Settings
   ): void {
     const value = Number(e.target.value);
-    console.log(value);
     if (!value) return;
 
     updateSetting({ [field]: value });

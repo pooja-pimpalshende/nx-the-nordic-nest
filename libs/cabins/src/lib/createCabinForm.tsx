@@ -32,12 +32,10 @@ export function CreateCabinForm({
       defaultValues: isEditSession ? editValues : {},
     });
   const { errors } = formState;
-  console.log(errors);
 
   const isWorking = isCreating || isEditing;
 
   function onSubmit(data: FormValues) {
-    console.log(data);
     if (isEditSession)
       editCabin(
         { newCabinData: { ...data, image: data.image }, id: editId },
@@ -60,9 +58,7 @@ export function CreateCabinForm({
       );
   }
 
-  function onError(errors: FieldErrors<FormValues>) {
-    // console.log(errors);
-  }
+  function onError(errors: FieldErrors<FormValues>) {}
 
   return (
     <Form

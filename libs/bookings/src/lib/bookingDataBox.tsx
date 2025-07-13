@@ -136,8 +136,6 @@ export const BookingdataBox: React.FC<BookingdataBoxProps> = ({ booking }) => {
     nationalID,
   } = booking.guests;
 
-  console.log('************************** booking', booking);
-
   return (
     <StyledBookingDataBox>
       <Header>

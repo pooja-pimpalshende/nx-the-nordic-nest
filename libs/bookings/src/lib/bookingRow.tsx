@@ -134,7 +134,6 @@ export function BookingRow({
               <Menus.Button
                 icon={<HiArrowUpOnSquare />}
                 onClick={() => {
-                  console.log('bookingId', bookingId);
                   checkout(bookingId);
                 }}
                 disabled={isCheckingOut}

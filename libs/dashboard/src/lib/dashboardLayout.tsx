@@ -26,8 +26,6 @@ export function DashboardLayout() {
   if (isPendingRecentBookings || isPendingRecentStays || isPendingCabins)
     return <Spinner />;
 
-  console.log(bookings);
-
   return (
     <StyleddashboardLayout>
       <Stats

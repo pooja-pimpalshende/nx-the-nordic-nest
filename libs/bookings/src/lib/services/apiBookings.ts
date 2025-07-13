@@ -14,7 +14,6 @@ export async function getBookings({
 
   if (filter) query = query.eq(filter.field, filter.value);
   // query = query[filter.method || 'eq'](filter.field, filter.value);
-  console.log('sortBy =>', sortBy);
 
   if (sortBy)
     query = query.order(sortBy.field, {

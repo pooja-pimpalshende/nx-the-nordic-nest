@@ -5,8 +5,6 @@ import { useBookings } from './hooks';
 export function BookingsTable() {
   const { bookings, isPending, count } = useBookings();
 
-  console.log(bookings);
-
   function isSafeBooking(
     booking: unknown
   ): booking is BookingRowProps['booking'] {
@@ -22,8 +20,8 @@ export function BookingsTable() {
     isSafeBooking
   );
 
-  if (isPending) return <Spinner />;
   if (!safeBookings.length) return <Empty resourceName="bookings" />;
+  if (isPending) return <Spinner />;
 
   return (
     <Menus>
