@@ -6,7 +6,6 @@ import {
   redirect,
 } from '@tanstack/react-router';
 
-import { dashboardRoutes } from '@/dashboard';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import App from './app/app';
 import { creteApplicationRoute } from './app/routing-config';
@@ -56,7 +55,7 @@ const indexRoute = createRoute({
   getParentRoute: () => appRoute,
   path: '/',
   loader: () => {
-    throw redirect({ to: dashboardRoutes()[0].path, replace: true });
+    throw redirect({ to: loginRoutes()[0].path, replace: true });
   },
 });
 

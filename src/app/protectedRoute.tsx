@@ -20,7 +20,7 @@ export function ProtectedRoute({ children }: { children: ReactElement }) {
 
   //2.If there is no authenticated user redirect to login
   useEffect(() => {
-    if (!isAuthenticated && !isPending) navigate({ to: '/login' as '/' });
+    if (!isAuthenticated && !isPending) navigate({ to: '/' });
   }, [isAuthenticated, isPending, navigate]);
 
   //3.While loading show spinner

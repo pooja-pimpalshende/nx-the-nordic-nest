@@ -37,10 +37,17 @@ export async function loginApi({
   });
 
   if (error) {
-    throw new Error('Login could not be loaded ');
+    throw new Error(error.message);
   }
 
   return data;
+}
+
+export async function logoutApi() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    throw new Error(error.message);
+  }
 }
 
 export async function getCurrentUser() {
@@ -50,17 +57,10 @@ export async function getCurrentUser() {
   const { data, error } = await supabase.auth.getUser();
 
   if (error) {
-    throw new Error('Login could not be loaded ');
+    throw new Error(error.message);
   }
 
   return data?.user;
-}
-
-export async function logoutApi() {
-  const { error } = await supabase.auth.signOut();
-  if (error) {
-    throw new Error(error.message);
-  }
 }
 
 export async function updateCurrentUser({
