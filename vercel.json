@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npx nx build nx-the-nordic-nest",
+  "outputDirectory": "dist/nx-the-nordic-nest",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
