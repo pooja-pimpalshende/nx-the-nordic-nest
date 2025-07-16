@@ -37,14 +37,14 @@ export function SignUpForm() {
 
       <FormRow label="Email address" error={errors?.email?.message}>
         <Input
-          type="text"
+          type="email"
           id="email"
           disabled={isPending}
           {...register('email', {
             required: 'This field is required',
             pattern: {
               value: /\S+@\S+\.\S+/,
-              message: 'Provide valid email address',
+              message: 'Please provide valid email address',
             },
           })}
         />

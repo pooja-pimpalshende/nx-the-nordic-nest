@@ -14,7 +14,12 @@ export async function signUpApi({
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { fullName, avatar: '' } },
+    options: {
+      data: {
+        fullName,
+        avatar: '',
+      },
+    },
   });
 
   if (error) {
