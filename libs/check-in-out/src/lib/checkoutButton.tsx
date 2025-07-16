@@ -2,7 +2,7 @@ import { Button } from '@/shared';
 import { useCheckout } from './hooks';
 
 export function CheckoutButton({ bookingId }: { bookingId: number }) {
-  const { checkout, isCheckingOut } = useCheckout();
+  const { checkout, isCheckingOut } = useCheckout('/dashboard');
 
   return (
     <Button
