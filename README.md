@@ -37,3 +37,18 @@ The Nordic Nest is a modern hotel management app built with **React** , **Typesc
 🔐 Protected routes with role-based access (admin/user)
 
 📦 File uploads (cabin images to Supabase Storage)
+
+## 🔐 Login Credentials
+
+Since this is an admin-only login system, please use the following credentials to log in:
+
+**Username:** `test@test.com`  
+**Password:** `test12345`
+
+## 🚀 Live on
+
+🔗 [The Nordic Nest](https://the-nordic-nest.vercel.app/)
+
+## 📹 Demo Video
+
+[![Demo Preview](https://the-nordic-nest.vercel.app/demo-thumbnail.png)](https://the-nordic-nest.vercel.app/NordicNestFinal.mp4)
