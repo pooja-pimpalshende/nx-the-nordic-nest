@@ -6,5 +6,14 @@
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project nx-the-nordic-nest --web",
-  "targets": {}
+  "targets": {
+    "test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "passWithNoTests": true,
+        "reporters": ["default"],
+        "coverage": true
+      }
+    }
+  }
 }
