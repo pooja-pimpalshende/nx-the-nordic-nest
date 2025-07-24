@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
-
-import Settings from './settings';
+import { render, screen } from '@testing-library/react';
+import { Settings } from './settings';
+import { renderWithQuery } from '../../../../src/app/test-utils';
 
 describe('Settings', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Settings />);
-    expect(baseElement).toBeTruthy();
+    renderWithQuery(<Settings />);
+    expect(screen.getByText('Update hotel settings')).not.toBe(undefined);
   });
 });
